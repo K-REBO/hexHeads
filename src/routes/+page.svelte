@@ -81,7 +81,7 @@
 
 <div class="flex-col justify-stretch space-y-32 text-gray-300">
     <div class="text-center">
-        <a class="font-bold text-3xl underline" href="https://hex.app.bido.dev">Hex Heads{ope}</a>
+        <a class="font-bold text-3xl underline" href="https://20b.bido.dev">Hex Heads{ope}</a>
         <p class="text-center">Let's calculate <strong>Hex</strong> in your head cuz it's cool like guru <a href="https://www.tumblr.com/banker-hacker/82297634601/yeah-i-know-what-binary-is-jesus-christ-i">Hacker</a>.</p>
     </div>
     
