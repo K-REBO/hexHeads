@@ -10,8 +10,6 @@ temp
 .eslintcache
 
 # build and dist
-build
-**/build
 dist
 **/dist
 .svelte
