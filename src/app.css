@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    font-family: 'Source Code Pro', monospace;
+    background-color: black;
+    color: rgb(159, 159, 159);
+}
+html {
+    touch-action: manipulation;
+}
+a {
+    text-decoration: underline;
+}
+footer {
+    position: absolute;
+    bottom: 10px;
+    margin-left: 2ex;
+    font-size: xx-small;
+    @media screen and (min-width: 640px) {
+        font-size: small;
+    }
+}
