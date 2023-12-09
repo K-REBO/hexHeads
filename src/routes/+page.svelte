@@ -156,6 +156,7 @@
                 <a href="https://blog.bido.dev/policies/site">site policy</a>
             </span>
             <a href="https://blog.bido.dev/humans.txt">humans.txt</a>
+            <a href="https://github.com/K-REBO/hexHeads">GitHub</a>
         </p>
     </footer>
 </div>
