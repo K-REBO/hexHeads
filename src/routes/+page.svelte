@@ -7,6 +7,7 @@
     let limit = 100;
     let history = [];
     let isDivisible = true;
+    let isHide = true;
 
     function pushValue2hst() {
         history.push({
@@ -67,7 +68,17 @@
 
         ans = Math.round(answer * 16) / 16;
     }
-    
+
+    // For new branch
+    //  Nextボタンを変更してRevealボタンに変更する
+
+    //- 答えが?に隠される
+    //- Revealボタンを押すとNextボタンに切り替わり隠されていた答えが表示される
+    //- Nextボタンを押すとinit()が実行される
+
+
+
+
     init();
 </script>
 <TailwindCss />
@@ -94,7 +105,11 @@
             {
                 isDivisible ? "=":"≃"
             }
+            {#if isHide}
+            <span>?</span>
+            {:else}
             <span>{ans.toString(16)}</span>
+            {/if}
         </div>
         <div class="text-center text-gray-900">
             <span>{a}</span>
@@ -140,10 +155,20 @@
             FF</button>
         </div>
         
-        <button on:click={init} class=" rounded-sm px-2"
-        style="height:fit-content;background:#338391">
-        Next
+        {#if isHide}
+        <button on:click={() => isHide = false} class=" rounded-sm px-2"
+            style="height:fit-content;background:#338391">
+            Reveal
         </button>
+        {:else}
+        <button on:click={
+            () => {
+                isHide = true;
+                init();}
+        } class=" rounded-sm px-2" style="height:fit-content;background:#338391">
+            Next
+        </button>
+        {/if}
     </div>
     <footer>
         <p class="flex space-x-8">
