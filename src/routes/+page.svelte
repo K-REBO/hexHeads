@@ -4,10 +4,11 @@
     let a = 0;
     let b = 0;
     let ans = 0;
-    let limit = 100;
+    let limit = 15;
     let history = [];
     let isDivisible = true;
     let isHide = true;
+
 
     function pushValue2hst() {
         history.push({
@@ -68,17 +69,6 @@
 
         ans = Math.round(answer * 16) / 16;
     }
-
-    // For new branch
-    //  Nextボタンを変更してRevealボタンに変更する
-
-    //- 答えが?に隠される
-    //- Revealボタンを押すとNextボタンに切り替わり隠されていた答えが表示される
-    //- Nextボタンを押すとinit()が実行される
-
-
-
-
     init();
 </script>
 <TailwindCss />
@@ -105,11 +95,9 @@
             {
                 isDivisible ? "=":"≃"
             }
-            {#if isHide}
-            <span>?</span>
-            {:else}
-            <span>{ans.toString(16)}</span>
-            {/if}
+            <span>{
+                isHide ? "?":ans.toString(16)
+            }</span>
         </div>
         <div class="text-center text-gray-900">
             <span>{a}</span>
@@ -122,50 +110,78 @@
         </div>
     </div>
     
-    <div class="flex sm:flex-row justify-center gap-6  text-center text-3xl sm:text-2xl"
+    <div
+    class="flex sm:flex-row justify-center gap-6  text-center text-3xl sm:text-2xl px-3"
     style="align-items:center"
     >
         <div class="flex gap-5" style="height:fit-content">
-            <button on:click={() => change_operator('+')} class=" rounded-sm px-2 font-bold"
+            <button on:click={() => change_operator('+')}
+                class=" rounded-sm px-2 font-bold
+                {ope == '+' ?'underline':''}
+                "
                 style="background:#338391">
                 +
             </button>
-            <button on:click={() => change_operator("-")} class=" rounded-sm px-2 font-bold"
+            <button on:click={() => change_operator("-")}
+                class=" rounded-sm px-2 font-bold
+                {ope == '-' ?'underline':''}
+                "
                 style="background:#338391">
                 -
             </button>
-            <button on:click={() => change_operator("*")} class=" rounded-sm px-2 font-bold"
+            <button on:click={() => change_operator("*")}
+                class=" rounded-sm px-2 font-bold
+                {ope == '*' ?'underline':''}
+                "
                 style="background:#338391">
                 *
             </button>
-            <button on:click={() => change_operator("/")} class=" rounded-sm px-2 font-bold"
+            <button on:click={() => change_operator("/")}
+                class=" rounded-sm px-2 font-bold
+                {ope == '/' ?'underline':''}
+                "
                 style="background:#338391">
                 /
             </button>
         </div>
         <div>
-            <button class="rounded-sm bg-red-400 px-2"
-            on:click={() => changeLimit(16)}>
-            16</button>
-            <button class="rounded-sm bg-red-600 px-2"
+            <button class="rounded-sm bg-red-400 px-2
+            {
+                limit == 15 ?'underline':''
+            }
+            "
+            on:click={() => changeLimit(15)}>
+            F</button>
+            <button class="rounded-sm bg-red-600 px-2
+            {
+                limit == 16*2 ?'underline':''
+            }
+            "
             on:click={() => changeLimit(16*2)}>
             1A</button>
-            <button class="rounded-sm bg-red-700 px-2"
+            <button class="rounded-sm bg-red-700 px-2
+            {
+                limit == 255 ?'underline':''
+            }
+            "
             on:click={() => changeLimit(255)}>
             FF</button>
         </div>
         
         {#if isHide}
-        <button on:click={() => isHide = false} class=" rounded-sm px-2"
-            style="height:fit-content;background:#338391">
-            Reveal
+        <button on:click={() => isHide = false}
+            class=" rounded-sm px-2"
+            style="height:fit-content;background:#338391;">
+            Rvel
         </button>
         {:else}
         <button on:click={
             () => {
                 isHide = true;
-                init();}
-        } class=" rounded-sm px-2" style="height:fit-content;background:#338391">
+                init();
+            }}
+        class=" rounded-sm px-2"
+        style="height:fit-content;background:#338391;">
             Next
         </button>
         {/if}
